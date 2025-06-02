@@ -5,8 +5,12 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
 
+// Routes defined in auth-routes.js are prefixed with /auth
 router.use('/auth', authRoutes);
-// TODO: Add authentication to the API routes
-router.use('/api', apiRoutes);
+
+// Routes defined in ./api/index.ts are prefixed with /api
+
+// API routes must pass through the middleware authenticateToken first!
+router.use('/api', authenticateToken, apiRoutes);
 
 export default router;

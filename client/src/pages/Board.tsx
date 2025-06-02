@@ -1,3 +1,5 @@
+// Outstanding questions:
+
 import { useEffect, useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,8 +19,11 @@ const Board = () => {
   const [loginCheck, setLoginCheck] = useState(false);
 
   const checkLogin = () => {
-    if(auth.loggedIn()) {
+    if(auth.loggedIn() && !auth.isTokenExpired(auth.getToken())) {
       setLoginCheck(true);
+    } else {
+      setLoginCheck(false);
+      window.location.assign('/login');
     }
   };
 

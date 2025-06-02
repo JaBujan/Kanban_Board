@@ -1,3 +1,5 @@
+// We don't need to do anything here...
+
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
 
